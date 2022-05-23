@@ -1,0 +1,61 @@
+.weather {
+  background: #1e213a;
+  width: 25%;
+  height: 100vh;
+  z-index: -1;
+}
+
+.weather-button {
+  width: 161px;
+  height: 30px;
+  background: #6e707a;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 10px;
+  margin-left: 20px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #e7e7eb;
+  cursor: pointer;
+}
+
+.weather-background {
+  opacity: 0.2;
+  object-fit: contain;
+  position: absolute;
+  width: 45%;
+  height: 40%;
+  top: 20px;
+  left: -12%;
+}
+.weather-image {
+  margin-top: 30px;
+  margin-left: 80px;
+  width: 150px;
+}
+.weather-details {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+
+  color: #a09fb1;
+}
+.weather-temperature span {
+  font-weight: 500;
+  font-size: 100px;
+  margin-top: 15px;
+
+  color: #e7e7eb;
+}
+.weather-date,
+.weather-location {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+}
+.weather-location {
+  font-weight: 600;
+}
