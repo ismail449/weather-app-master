@@ -5,6 +5,26 @@
   z-index: -1;
 }
 
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gps-background {
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  background: #6e707a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.gps-icon {
+  color: white;
+}
 .weather-button {
   width: 161px;
   height: 30px;
@@ -58,4 +78,7 @@
 }
 .weather-location {
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,0 +1,28 @@
+.WeatherDetails {
+  background: #100e1d;
+  flex: 1;
+}
+
+.WeatherDetails-temperature-options {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 100px;
+  font-weight: 700;
+  line-height: 21px;
+  text-transform: capitalize;
+}
+
+.WeatherDetails-cel,
+.WeatherDetails-f {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #e7e7eb;
+  margin-right: 10px;
+  color: #110e3c;
+  cursor: pointer;
+}
