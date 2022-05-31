@@ -39,6 +39,7 @@
   text-align: center;
   color: #e7e7eb;
   cursor: pointer;
+  border: none;
 }
 
 .weather-background {
@@ -51,8 +52,12 @@
   left: -12%;
 }
 .weather-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.weather-image img {
   margin-top: 30px;
-  margin-left: 80px;
   width: 150px;
 }
 .weather-details {
@@ -81,4 +86,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.weather-condition {
+  text-transform: capitalize;
 }
