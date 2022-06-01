@@ -2,7 +2,6 @@
   background: #1e213a;
   width: 25%;
   height: 100vh;
-  z-index: -1;
 }
 
 .top-bar {
@@ -24,6 +23,7 @@
 }
 .gps-icon {
   color: white;
+  cursor: pointer;
 }
 .weather-button {
   width: 161px;

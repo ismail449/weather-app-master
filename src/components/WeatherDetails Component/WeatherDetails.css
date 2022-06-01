@@ -1,6 +1,7 @@
 .WeatherDetails {
   background: #100e1d;
   flex: 1;
+  z-index: 2;
 }
 
 .WeatherDetails-temperature-options {
