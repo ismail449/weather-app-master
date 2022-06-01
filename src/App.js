@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Weather from './components/Weather Component/Weather';
 import WeatherDetails from './components/WeatherDetails Component/WeatherDetails';
-import key from './apiKey';
+import {key} from './apiKey';
 import './App.css';
 
 function App() {
@@ -10,11 +10,11 @@ function App() {
   const [weatherDescription, setWeatherDescription] = useState('');
   const [mainWeather, setMainWeather] = useState('Clear');
   const [city, setCity] = useState('cairo');
+  const [error, setError] = useState(false)
   useEffect(() => {
     getPosition();
   }, []);
   const getPosition = () => {
-    console.log('Hello')
     const error = () => fetchWeather('no position');
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(fetchWeather, error);
@@ -23,15 +23,16 @@ function App() {
     }
   };
   const fetchWeather = async (position) => {
-    console.log(position);
     let response = '';
     try {
       if (position === 'no position') {
         response = await fetch(`${url}weather?q=cairo&${key}`);
-      } else {
+      } else if(position.coords) {
         response = await fetch(
           `${url}weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&${key}`,
         );
+      }else{
+        response = await fetch(`${url}weather?q=${position}&${key}`);
       }
 
       const data = await response.json();
@@ -40,8 +41,10 @@ function App() {
       setWeatherDescription(data.weather[0].description);
       setMainWeather(data.weather[0].main)
       setCity(data.name);
+      setError(false)
     } catch (error) {
       console.log(error);
+      setError(true)
     }
   };
   return (
@@ -52,6 +55,8 @@ function App() {
         weatherDescription={weatherDescription}
         getPosition={getPosition}
         mainWeather={mainWeather}
+        fetchWeather={fetchWeather}
+        error={error}
       />
       <WeatherDetails />
     </div>

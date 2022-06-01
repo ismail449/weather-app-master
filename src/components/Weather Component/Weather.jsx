@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Search from '../Search Component/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import { months, days } from './data';
@@ -10,8 +11,11 @@ const Weather = ({
   city,
   getPosition,
   mainWeather,
+  fetchWeather,
+  error,
 }) => {
   const [imageName, setImageName] = useState('clear sky');
+  const [showSearch, setShowSearch] = useState(false);
   useEffect(() => {
     getImageName();
   }, [weatherDescription]);
@@ -67,10 +71,18 @@ const Weather = ({
       setImageName('HeavyCloud');
     }
   };
+  const toggleSearch = () => {
+    setShowSearch(!showSearch);
+  };
   return (
     <div className="weather">
+      {showSearch ? (
+        <Search fetchWeather={fetchWeather} toggleSearch={toggleSearch} />
+      ) : null}
       <div className="top-bar">
-        <button className="weather-button">Seach for places</button>
+        <button onClick={toggleSearch} className="weather-button">
+          Seach for places
+        </button>
         <div onClick={getPosition} className="gps-background">
           <GpsFixedIcon className="gps-icon" />
         </div>
@@ -95,7 +107,12 @@ const Weather = ({
         </p>
         <p className="weather-location">
           {' '}
-          <LocationOnIcon /> <span>{city}</span>
+          <LocationOnIcon />{' '}
+          {error ? (
+            <span className="error">Error city not found</span>
+          ) : (
+            <span>{city}</span>
+          )}
         </p>
       </div>
     </div>
