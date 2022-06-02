@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Weather from './components/Weather Component/Weather';
 import WeatherDetails from './components/WeatherDetails Component/WeatherDetails';
-import { key } from './apiKey';
+import { key, url } from './apiKey';
 import './App.css';
 
 function App() {
-  const url = 'https://api.openweathermap.org/data/2.5/';
   const [temperature, setTemperature] = useState(0);
   const [wind, setWind] = useState({ deg: 0, speed: 0 });
   const [humidity, setHumidity] = useState(0);
@@ -70,6 +69,7 @@ function App() {
         humidity={humidity}
         visibility={visibility}
         pressure={pressure}
+        city={city}
       />
     </div>
   );

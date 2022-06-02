@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import East from '@mui/icons-material/East';
 import useDirction from './useDirection';
+import { url, key } from '../../apiKey';
 import './WeatherDetails.css';
 
-const WeatherDetails = ({ wind, humidity, visibility, pressure }) => {
+const WeatherDetails = ({ wind, humidity, visibility, pressure, city }) => {
   const direction = useDirction(wind.deg);
   const [celActive, setCelActive] = useState(true);
+  useEffect(() => {
+    fetchForecast();
+  }, []);
+  const fetchForecast = async () => {
+    try {
+      const response = await fetch(`${url}forecast?q=${city}&${key}`);
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handleTempChange = (isActive) => {
     setCelActive(isActive);
   };
