@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import East from '@mui/icons-material/East';
 import useDirction from './useDirection';
-
 import './WeatherDetails.css';
 
 const WeatherDetails = ({ wind, humidity, visibility, pressure }) => {

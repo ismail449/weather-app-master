@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Search from '../Search Component/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
+import useImageName from './useImageName';
 import { months, days } from './data';
 import './Weather.css';
 
@@ -14,63 +15,14 @@ const Weather = ({
   fetchWeather,
   error,
 }) => {
-  const [imageName, setImageName] = useState('clear sky');
   const [showSearch, setShowSearch] = useState(false);
-  useEffect(() => {
-    getImageName();
-  }, [weatherDescription]);
+  const imageName = useImageName(mainWeather, weatherDescription);
+  useEffect(() => {}, [weatherDescription]);
   const date = new Date();
   const month = date.getMonth();
   const day = date.getDay();
   const dayNumber = date.getDate();
-  const getImageName = () => {
-    if (mainWeather === 'Clear') {
-      setImageName('clear sky');
-    } else if (mainWeather === 'Rain') {
-      if (weatherDescription === 'freezing rain') {
-        setImageName('Hail');
-      } else if (
-        weatherDescription === 'heavy intensity rain' ||
-        weatherDescription === 'very heavy rain' ||
-        weatherDescription === 'extreme rain'
-      ) {
-        setImageName('HeavyRain');
-      } else if (
-        weatherDescription === 'light rain' ||
-        weatherDescription === 'moderate rain'
-      ) {
-        setImageName('LightRain');
-      } else {
-        setImageName('Shower');
-      }
-    } else if (mainWeather === 'Clouds') {
-      if (
-        weatherDescription === 'broken clouds' ||
-        weatherDescription === 'overcast clouds'
-      ) {
-        setImageName('HeavyCloud');
-      } else if (
-        weatherDescription === 'few clouds' ||
-        weatherDescription === 'scattered clouds'
-      ) {
-        setImageName('LightCloud');
-      }
-    } else if (mainWeather === 'Snow') {
-      if (
-        weatherDescription === 'Sleet' ||
-        weatherDescription === 'Light shower sleet' ||
-        weatherDescription === 'Shower sleet'
-      ) {
-        setImageName('Sleet');
-      } else {
-        setImageName('Snow');
-      }
-    } else if (mainWeather === 'Thunderstorm') {
-      setImageName('Thunderstorm');
-    } else {
-      setImageName('HeavyCloud');
-    }
-  };
+
   const toggleSearch = () => {
     setShowSearch(!showSearch);
   };
