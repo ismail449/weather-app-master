@@ -1,17 +1,31 @@
 .WeatherDetails {
+  color: #e7e7eb;
   background: #100e1d;
   flex: 1;
   z-index: 2;
+}
+
+.WeatherDetails-container {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 40px;
+}
+.WeatherDetails-background {
+  background: #1e213a;
 }
 
 .WeatherDetails-temperature-options {
   margin-top: 10px;
   display: flex;
   justify-content: flex-end;
-  margin-right: 100px;
   font-weight: 700;
   line-height: 21px;
   text-transform: capitalize;
+}
+
+.WeatherDetails-cel {
+  margin-right: 10px;
 }
 
 .WeatherDetails-cel,
@@ -22,8 +36,90 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: #e7e7eb;
-  margin-right: 10px;
-  color: #110e3c;
+  background: #585676;
+  color: #e7e7eb;
   cursor: pointer;
+}
+.active {
+  background: #e7e7eb;
+  color: #110e3c;
+}
+
+.WeatherDetails-title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  text-transform: capitalize;
+}
+.WeatherDetails-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 36px;
+  row-gap: 36px;
+}
+.WeatherDetails-grid-item {
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+}
+.WeatherDetails-grid-info {
+  font-size: 36px;
+  line-height: 75px;
+}
+.WeatherDetails-grid-main {
+  font-size: 64px;
+  font-weight: 700;
+}
+.WeatherDetails-grid-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.WeatherDetails-grid-background {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.WeatherDetails-grid-direction {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.WeatherDetails-grid-progress progress {
+  display: block;
+  width: 100%;
+  height: 10px;
+  margin: auto;
+  margin-bottom: 0;
+  color: #ffec65;
+}
+.WeatherDetails-grid-progress {
+  width: 70%;
+  margin: auto;
+}
+.small-number {
+  font-size: 10px;
+  color: #a09fb1;
+  position: absolute;
+  margin: 0;
+}
+.number {
+  top: 230px;
+}
+.hunderd {
+  right: 87px;
+}
+.zero {
+  right: 310px;
+}
+.percent {
+  top: 253px;
+  right: 87px;
 }
