@@ -11,9 +11,6 @@
   margin-left: auto;
   margin-top: 40px;
 }
-.WeatherDetails-background {
-  background: #1e213a;
-}
 
 .WeatherDetails-temperature-options {
   margin-top: 10px;
@@ -44,7 +41,12 @@
   background: #e7e7eb;
   color: #110e3c;
 }
-
+.WeatherDeatails-forecast {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 30px;
+}
 .WeatherDetails-title {
   font-weight: 700;
   font-size: 24px;
@@ -63,6 +65,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
+  background: #1e213a;
 }
 .WeatherDetails-grid-info {
   font-size: 36px;
@@ -111,15 +114,15 @@
   margin: 0;
 }
 .number {
-  top: 230px;
+  top: 62%;
 }
 .hunderd {
-  right: 87px;
+  right: 8.5%;
 }
 .zero {
-  right: 310px;
+  right: 31%;
 }
 .percent {
-  top: 253px;
-  right: 87px;
+  top: 65.5%;
+  right: 8.5%;
 }

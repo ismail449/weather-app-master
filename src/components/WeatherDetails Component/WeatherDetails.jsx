@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Forecast from '../ForecastComponent/Forecast';
 import East from '@mui/icons-material/East';
 import useDirction from './useDirection';
 import { url, key } from '../../apiKey';
@@ -7,14 +8,16 @@ import './WeatherDetails.css';
 const WeatherDetails = ({ wind, humidity, visibility, pressure, city }) => {
   const direction = useDirction(wind.deg);
   const [celActive, setCelActive] = useState(true);
+  const [forecast, setForecast] = useState([]);
   useEffect(() => {
     fetchForecast();
-  }, []);
+  }, [city]);
   const fetchForecast = async () => {
     try {
       const response = await fetch(`${url}forecast?q=${city}&${key}`);
       const data = await response.json();
-      console.log(data);
+      console.log(data.list);
+      setForecast(data.list);
     } catch (error) {
       console.log(error);
     }
@@ -39,9 +42,26 @@ const WeatherDetails = ({ wind, humidity, visibility, pressure, city }) => {
             &deg;f
           </div>
         </div>
+        <div className="WeatherDeatails-forecast">
+          {forecast?.map((day, index) => {
+            if (index % 8 === 0) {
+              return (
+                <Forecast
+                  key={day.dt_txt}
+                  maxTemp={day.main.temp_max}
+                  minTemp={day.main.temp_min}
+                  icon={day.weather[0].icon}
+                  index={index / 8 + 1}
+                />
+              );
+            } else {
+              return null;
+            }
+          })}
+        </div>
         <h2 className="WeatherDetails-title">today's hightlights </h2>
         <div className="WeatherDetails-grid">
-          <div className="WeatherDetails-grid-item WeatherDetails-background">
+          <div className="WeatherDetails-grid-item ">
             <p>Wind status</p>
             <div className="WeatherDetails-grid-info">
               <span className="WeatherDetails-grid-main">
@@ -59,7 +79,7 @@ const WeatherDetails = ({ wind, humidity, visibility, pressure, city }) => {
               </div>
             </div>
           </div>
-          <div className="WeatherDetails-grid-item WeatherDetails-background">
+          <div className="WeatherDetails-grid-item ">
             <p>Humidity</p>
             <div className="WeatherDetails-grid-info">
               <span className="WeatherDetails-grid-main">{humidity}</span>%
@@ -72,7 +92,7 @@ const WeatherDetails = ({ wind, humidity, visibility, pressure, city }) => {
               </div>
             </div>
           </div>
-          <div className="WeatherDetails-grid-item WeatherDetails-background">
+          <div className="WeatherDetails-grid-item ">
             <p>Visibility</p>
             <div className="WeatherDetails-grid-info">
               <span className="WeatherDetails-grid-main">
@@ -81,7 +101,7 @@ const WeatherDetails = ({ wind, humidity, visibility, pressure, city }) => {
               miles
             </div>
           </div>
-          <div className="WeatherDetails-grid-item WeatherDetails-background">
+          <div className="WeatherDetails-grid-item ">
             <p>Air Pressure</p>
             <div className="WeatherDetails-grid-info">
               <span className="WeatherDetails-grid-main">{pressure} </span>mb

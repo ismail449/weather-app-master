@@ -3,7 +3,8 @@ import Search from '../Search Component/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import useImageName from './useImageName';
-import { months, days } from './data';
+import useDate from '../useDate';
+import { months, days } from '../data';
 import './Weather.css';
 
 const Weather = ({
@@ -17,11 +18,7 @@ const Weather = ({
 }) => {
   const [showSearch, setShowSearch] = useState(false);
   const imageName = useImageName(mainWeather, weatherDescription);
-  useEffect(() => {}, [weatherDescription]);
-  const date = new Date();
-  const month = date.getMonth();
-  const day = date.getDay();
-  const dayNumber = date.getDate();
+  const { month, day, dayNumber } = useDate();
 
   const toggleSearch = () => {
     setShowSearch(!showSearch);
