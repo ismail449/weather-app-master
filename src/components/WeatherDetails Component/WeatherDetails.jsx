@@ -16,7 +16,6 @@ const WeatherDetails = ({ wind, humidity, visibility, pressure, city }) => {
     try {
       const response = await fetch(`${url}forecast?q=${city}&${key}`);
       const data = await response.json();
-      console.log(data.list);
       setForecast(data.list);
     } catch (error) {
       console.log(error);
@@ -84,11 +83,7 @@ const WeatherDetails = ({ wind, humidity, visibility, pressure, city }) => {
             <div className="WeatherDetails-grid-info">
               <span className="WeatherDetails-grid-main">{humidity}</span>%
               <div className="WeatherDetails-grid-progress">
-                <span className="zero small-number number">0</span>
-                <span className="small-number number">50</span>
-                <span className="hunderd small-number number">100</span>
                 <progress max={100} value={humidity}></progress>
-                <p className="percent small-number">%</p>
               </div>
             </div>
           </div>
