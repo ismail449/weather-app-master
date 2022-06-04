@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Forecast from '../ForecastComponent/Forecast';
+import Footer from '../Footer Component/Footer';
 import East from '@mui/icons-material/East';
 import useDirction from './useDirection';
 import { url, key } from '../../apiKey';
@@ -104,6 +105,7 @@ const WeatherDetails = ({ wind, humidity, visibility, pressure, city }) => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { cityAutoCompleteKey } from '../../apiKey';
+import { cityAutoCompleteKey, cores } from '../../apiKey';
 import './Search.css';
 
 const Search = ({ toggleSearch, fetchWeather }) => {
@@ -14,7 +14,7 @@ const Search = ({ toggleSearch, fetchWeather }) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${cityAutoCompleteKey}&q=${cityName}`,
+        `${cores}http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${cityAutoCompleteKey}&q=${cityName}`,
       );
       const data = await response.json();
       setSuggestions(data);
