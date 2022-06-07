@@ -1,11 +1,13 @@
 import React from 'react';
 import { months, days } from '../data';
-import useDate from '../useDate';
+import getDate from '../getDate';
+import toFahrenheit from '../toFahrenheit';
 import './Forecast.css';
 
-const Forecast = ({ maxTemp, minTemp, icon, index }) => {
-  const { month, day, dayNumber } = useDate(index);
-
+const Forecast = ({ maxTemp, minTemp, icon, index, isFahrenheit }) => {
+  const { month, day, dayNumber } = getDate(index);
+  const fahrenheitMax = toFahrenheit(maxTemp);
+  const fahrenheitMin = toFahrenheit(minTemp);
   return (
     <div className="forecast background">
       <div className="forecast-date">{`${days[day]} ,${dayNumber} ${months[month]}`}</div>
@@ -14,8 +16,14 @@ const Forecast = ({ maxTemp, minTemp, icon, index }) => {
         src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
       />
       <div className="forecast-temp">
-        <span>{Math.round(maxTemp)} &deg;c</span>
-        <span>{Math.round(minTemp)} &deg;c</span>
+        <span>
+          {isFahrenheit ? fahrenheitMax : maxTemp.toFixed(1)} &deg;
+          {isFahrenheit ? 'f' : 'c'}
+        </span>
+        <span>
+          {isFahrenheit ? fahrenheitMin : minTemp.toFixed(1)} &deg;
+          {isFahrenheit ? 'f' : 'c'}
+        </span>
       </div>
     </div>
   );

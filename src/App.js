@@ -14,6 +14,7 @@ function App() {
   const [mainWeather, setMainWeather] = useState('Clear');
   const [city, setCity] = useState('cairo');
   const [error, setError] = useState(false);
+  const [isFahrenheit, setIsFahrenheit] = useState(false)
   useEffect(() => {
     getPosition();
   }, []);
@@ -63,6 +64,7 @@ function App() {
         mainWeather={mainWeather}
         fetchWeather={fetchWeather}
         error={error}
+        isFahrenheit={isFahrenheit}
       />
       <WeatherDetails
         wind={wind}
@@ -70,6 +72,8 @@ function App() {
         visibility={visibility}
         pressure={pressure}
         city={city}
+        isFahrenheit={isFahrenheit}
+        setIsFahrenheit={setIsFahrenheit}
       />
     </div>
   );

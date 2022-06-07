@@ -1,4 +1,4 @@
-const useImageName = (mainWeather, weatherDescription) => {
+const getImageName = (mainWeather, weatherDescription) => {
     if (mainWeather === 'Clear') {
       return 'clear sky';
     } else if (mainWeather === 'Rain') {
@@ -47,4 +47,4 @@ const useImageName = (mainWeather, weatherDescription) => {
     }
   };
 
-  export default useImageName
+  export default getImageName

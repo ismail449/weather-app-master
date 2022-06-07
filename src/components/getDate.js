@@ -1,4 +1,4 @@
-const useDate = (index = 0) => {
+const getDate = (index = 0) => {
   const date = new Date();
   const month = date.getMonth();
   const day = date.getDay();
@@ -10,4 +10,4 @@ const useDate = (index = 0) => {
   };
 };
 
-export default useDate;
+export default getDate;

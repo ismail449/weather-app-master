@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Search from '../Search Component/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
-import useImageName from './useImageName';
-import useDate from '../useDate';
+import getImageName from './getImageName';
+import getDate from '../getDate';
+import toFahrenheit from '../toFahrenheit';
 import { months, days } from '../data';
 import './Weather.css';
 
@@ -15,14 +16,18 @@ const Weather = ({
   mainWeather,
   fetchWeather,
   error,
+  isFahrenheit,
 }) => {
   const [showSearch, setShowSearch] = useState(false);
-  const imageName = useImageName(mainWeather, weatherDescription);
-  const { month, day, dayNumber } = useDate();
+  const imageName = getImageName(mainWeather, weatherDescription);
+  const { month, day, dayNumber } = getDate();
 
   const toggleSearch = () => {
     setShowSearch(!showSearch);
   };
+  const temp = temperature.toFixed(1);
+  const fahrenheit = toFahrenheit(temp);
+
   return (
     <div className="weather">
       {showSearch ? (
@@ -48,7 +53,8 @@ const Weather = ({
 
       <div className="weather-details">
         <p className="weather-temperature">
-          <span>{Math.round(temperature)}</span>&deg;c
+          <span>{isFahrenheit ? fahrenheit : temp}</span>&deg;
+          {isFahrenheit ? 'f' : 'c'}
         </p>
         <p className="weather-condition">{weatherDescription}</p>
         <p className="weather-date">

@@ -2,12 +2,20 @@ import React, { useState, useEffect } from 'react';
 import Forecast from '../ForecastComponent/Forecast';
 import Footer from '../Footer Component/Footer';
 import East from '@mui/icons-material/East';
-import useDirction from './useDirection';
+import getDirction from './getDirection';
 import { url, key } from '../../apiKey';
 import './WeatherDetails.css';
 
-const WeatherDetails = ({ wind, humidity, visibility, pressure, city }) => {
-  const direction = useDirction(wind.deg);
+const WeatherDetails = ({
+  wind,
+  humidity,
+  visibility,
+  pressure,
+  city,
+  setIsFahrenheit,
+  isFahrenheit,
+}) => {
+  const direction = getDirction(wind.deg);
   const [celActive, setCelActive] = useState(true);
   const [forecast, setForecast] = useState([]);
   useEffect(() => {
@@ -24,6 +32,7 @@ const WeatherDetails = ({ wind, humidity, visibility, pressure, city }) => {
   };
   const handleTempChange = (isActive) => {
     setCelActive(isActive);
+    setIsFahrenheit(!isActive);
   };
   return (
     <div className="WeatherDetails">
@@ -52,6 +61,7 @@ const WeatherDetails = ({ wind, humidity, visibility, pressure, city }) => {
                   minTemp={day.main.temp_min}
                   icon={day.weather[0].icon}
                   index={index / 8 + 1}
+                  isFahrenheit={isFahrenheit}
                 />
               );
             } else {

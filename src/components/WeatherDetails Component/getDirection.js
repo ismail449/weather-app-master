@@ -1,4 +1,4 @@
-const useDirction = (deg) => {
+const getDirction = (deg) => {
   if (deg === 0) {
     return 'we';
   } else if (deg === 90) {
@@ -17,4 +17,4 @@ const useDirction = (deg) => {
     return 'wse';
   }
 };
-export default useDirction;
+export default getDirction;
